@@ -1,0 +1,11 @@
+doctype html
+html(lang="uk")
+  head
+    title= title
+  body
+    h1= title
+    ul
+      each user in users
+        li
+          a(href=`/users/${user.id}`)= user.name
+          |  - #{user.email}
