@@ -1,0 +1,41 @@
+body {
+  color: #333;
+  background: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+
+  line-height: 1.6;
+  margin: 32px;
+}
+
+h1 {
+  color: blue;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 16px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -7,6 +7,8 @@ const PORT = 3000;
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.static(path.join(__dirname, "public")));
+
 const users = [
   { id: 1, name: "Ярослав", email: "y@example.com" },
   { id: 2, name: "Марія", email: "m@example.com" },
@@ -32,7 +34,7 @@ const articles = [
 ];
 
 app.get("/", (req, res) => {
-  res.send("Головна сторінка");
+  res.render("index", { title: "Головна сторінка" });
 });
 
 app.get("/users", (req, res) => {

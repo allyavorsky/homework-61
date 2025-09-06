@@ -2,6 +2,7 @@ doctype html
 html(lang="uk")
   head
     title= title
+    link(rel="stylesheet" href="/css/style.css")
   body
     h1= title
     ul
@@ -9,3 +10,4 @@ html(lang="uk")
         li
           a(href=`/users/${user.id}`)= user.name
           |  - #{user.email}
+    a(href="/") Повернутись на головну
