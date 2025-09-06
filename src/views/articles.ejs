@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <ul>
+    <% articles.forEach(function(article) { %>
+      <li>
+        <a href="/articles/<%= article.id %>">
+          <%= article.title %>
+        </a>
+      </li>
+      <% }); %>
+  </ul>
+</body>
+
+</html>

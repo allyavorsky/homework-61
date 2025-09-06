@@ -4,14 +4,32 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
 const users = [
   { id: 1, name: "Ярослав", email: "y@example.com" },
   { id: 2, name: "Марія", email: "m@example.com" },
   { id: 3, name: "Оля", email: "o@example.com" },
 ];
 
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+const articles = [
+  {
+    id: 1,
+    title: "Що таке Express",
+    content: "Express - це мінімалістичний веб-фреймворк для Node.js.",
+  },
+  {
+    id: 2,
+    title: "Що таке PUG",
+    content: "PUG - це потужний шаблонізатор для Node.js.",
+  },
+  {
+    id: 3,
+    title: "Що таке EJS",
+    content: "EJS дозволяє вбудовувати JavaScript прямо в HTML.",
+  },
+];
 
 app.get("/", (req, res) => {
   res.send("Головна сторінка");
@@ -33,7 +51,18 @@ app.get("/users/:userId", (req, res) => {
 });
 
 app.get("/articles", (req, res) => {
-  res.send("Сторінка статей (EJS)");
+  res.render("articles.ejs", { title: "Список статей", articles: articles });
+});
+
+app.get("/articles/:articleId", (req, res) => {
+  const articleId = parseInt(req.params.articleId);
+  const article = articles.find((a) => a.id === articleId);
+
+  if (article) {
+    res.render("article.ejs", { title: article.title, article: article });
+  } else {
+    res.status(404).send("Статтю не знайдено");
+  }
 });
 
 app.listen(PORT, () => {
